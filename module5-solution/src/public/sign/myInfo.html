@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 id="sign-up-title" class="text-center">My Information</h2>
+
+    <div class="container" >
+
+        <fieldset ng-if="signCtrl.infoSaved()">
+            <!--<h3 >Registration form</h3>-->
+            <span></span>
+            <div class="my-info-detail">First Name : {{signCtrl.info.firstName}}</div>
+                <div class="my-info-detail">Last Name : {{signCtrl.info.lastName}}</div>
+                <div class="my-info-detail">e-mail : {{signCtrl.info.email}}</div>
+                <div class="my-info-detail">phone : {{signCtrl.info.phone}}</div>
+
+            <div class="my-info-detail"> <h3>Preferred menu item</h3>
+                <menu-item menu-item="signCtrl.info.menuItemLoaded" ng-if="signCtrl.info.menuItemLoaded != undefined">Item not found</menu-item>
+                <span ng-if="signCtrl.info.menuItemLoaded == undefined && signCtrl.info.menuItem != undefined">
+                    Menu Item : "{{signCtrl.info.menuItem}}" not found
+                </span>
+                <span ng-if="signCtrl.info.menuItem == undefined">
+                    not yet defined 
+                </span>
+            </div>
+
+        </fieldset>
+        <h3 ng-if="!signCtrl.infoSaved()">Not Signed Up Yet. <a ui-sref="public.signup" ui-sref-active="active">
+            Sign Up Now
+        </a>
+
+        </h3>
+    </div>
+
+</div>

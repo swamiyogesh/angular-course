@@ -1,0 +1,56 @@
+<div class="container">
+
+    <fieldset>
+        <!--<h3 >Registration form</h3>-->
+        <form name='signup' novalidate>
+            <span></span>
+            <input type="text" name="firtsname" placeholder="first name"
+                   ng-model="$ctrl.firstName"
+                   required>
+            <span ng-if="signup.firtsname.$invalid && signup.firtsname.$touched">
+                first name is mandatory
+            </span>
+            <br>            
+            <input type="text" name="lastname" placeholder="last name"
+                   ng-model="$ctrl.lastName"
+                   required>
+            <span ng-if="signup.lastname.$invalid && signup.lastname.$touched">
+                last name is mandatory
+            </span>
+            <br>
+
+            <input type="email" name="email" placeholder="Email"
+                   ng-model="$ctrl.email"
+                   required>
+            <span ng-if="signup.email.$invalid && signup.email.$touched">
+                Must be a valid email address: handle@domain format
+            </span>
+            <br>
+
+            <input type="text" name="phone" placeholder="Phone ###-###-####"
+                   ng-model="$ctrl.phone"
+                   required
+                   pattern="(\d{3})-(\d{3})-(\d{4})">
+            <span ng-if="signup.phone.$invalid && signup.phone.$touched">
+                Phone must be in the format ###-###-####.
+            </span>
+            <br>
+
+            <input type="text" name="menuitem" placeholder="Preferred menu item"
+                   ng-model="$ctrl.menuItem">
+            <span ng-if="$ctrl.infoHasBeenSaved() && $ctrl.menuItemLoaded == undefined && ($ctrl.menuItem != '' || $ctrl.menuItem == undefined)">
+                No such menu number exists
+            </span>
+                      <br>
+
+            <button ng-disabled="signup.$invalid"
+                    ng-click="$ctrl.submit()">
+                Submit
+            </button>
+
+            <div style="margin-top: 10px;" ng-if="$ctrl.infoHasBeenSaved()">
+                Your information has been saved
+            </div>
+        </form>
+    </fieldset>
+</div>
